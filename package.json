@@ -1,8 +1,8 @@
 {
-  "name": "connect-modrewrite",
+  "name": "connect-modrewrite-timeout",
   "main": "./index.js",
-  "version": "0.10.2",
-  "description": "connect-modrewrite adds modrewrite functionality to connect/express server",
+  "version": "0.10.5",
+  "description": "connect-modrewrite adds modrewrite functionality to connect/express server with timeout",
   "author": {
     "name": "Tingan Ho",
     "email": "tingan87@gmail.com"
@@ -11,6 +11,10 @@
     {
       "name": "Tingan Ho",
       "email": "tingan87@gmail.com"
+    },
+    {
+      "name": "Facundo Merighi",
+      "email":"merighifacundo@gmail.com"
     }
   ],
   "repository": {
