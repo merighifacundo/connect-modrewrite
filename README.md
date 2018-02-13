@@ -1,31 +1,33 @@
-connect-modrewrite [![Build Status](https://travis-ci.org/tinganho/connect-modrewrite.png)](https://travis-ci.org/tinganho/connect-modrewrite)
+connect-modrewrite-timeout 
+(https://travis-ci.org/tinganho/connect-modrewrite)
 ========================
 
-[![NPM](https://nodei.co/npm/connect-modrewrite.png?downloads=true&stars=true)](https://nodei.co/npm/connect-modrewrite/)
 
-`connect-modrewrite` adds modrewrite functionality to connect/express server.
+
+`connect-modrewrite-timeout` adds modrewrite functionality to connect/express server.
 
 # Getting started
-Install `connect-modrewrite` with:
+Install `connect-modrewrite-timeout` with:
 ```bash
-npm install connect-modrewrite --save
+npm install connect-modrewrite-timeout --save
 ```
 
 Require it:
 
 ```javascript
-var modRewrite = require('connect-modrewrite');
+var modRewrite = require('connect-modrewrite-timeout');
 ```
 An example configuration:
 
 ```javascript
+let timeout = 1000;
 var app = connect() // express() for express 3.x  server
 // app.configure(function() { for express 3.x server
   .use(modRewrite([
     '^/test$ /index.html',
     '^/test/\\d*$ /index.html [L]',
     '^/test/\\d*/\\d*$ /flag.html [L]'
-  ]))
+  ],timeout))
   .use(connect.static(options.base))
   .listen(3000)
 // }) for express 3.x server
