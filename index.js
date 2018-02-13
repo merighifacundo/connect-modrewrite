@@ -30,7 +30,7 @@ var querySyntax = /\?(.*)/;
  * Export `API`
  */
 
-module.exports = function(rules) {
+module.exports = function(rules,timeout) {
   // Parse the rules to get flags, replace and match pattern
   rules = _parse(rules);
 
@@ -95,7 +95,7 @@ module.exports = function(rules) {
           req : req,
           res : res,
           next : next
-        });
+        },timeout);
         callNext = false;
         return true;
       }
@@ -191,7 +191,7 @@ function _parse(rules) {
  * @api private
  */
 
-function _proxy(rule, metas) {
+function _proxy(rule, metas, timeout) {
   var opts = _getRequestOpts(metas.req, rule);
   var request = httpsSyntax.test(rule.replace) ? httpsReq : httpReq;
 
@@ -203,6 +203,10 @@ function _proxy(rule, metas) {
     });
     res.pipe(metas.res);
   });
+
+  pipe.setTimeout(timeout, () => {
+    console.error("Request timeout");
+  })
 
   pipe.on('error', function (err) {
     metas.next(err);
